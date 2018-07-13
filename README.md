@@ -8,7 +8,7 @@ serialize a object
 
 `$ pip install easyserializer`
 
-```
+```python
 
 class Student(object):
     role = 'student'

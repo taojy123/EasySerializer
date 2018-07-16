@@ -10,6 +10,10 @@ serialize a object
 
 ```python
 
+from easyserializer import *
+import datetime
+
+
 class Student(object):
     role = 'student'
 

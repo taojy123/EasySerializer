@@ -15,7 +15,7 @@ serialize a object
 """
 
 
-VERSION = '0.12'
+VERSION = '0.14'
 
 
 class SerializeableObject(object):
@@ -126,6 +126,10 @@ def obj_to_json(obj, **kwargs):
 
 
 if __name__ == '__main__':
+
+    # $ pip install easyserializer
+    # from easyserializer import *
+    # import datetime
 
     class Student(object):
         role = 'student'

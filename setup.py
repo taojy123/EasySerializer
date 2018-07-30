@@ -1,7 +1,12 @@
 #coding=utf8
 
 from setuptools import setup
-import easyserializer
+
+
+try:
+    from easyserializer import VERSION
+except Exception as e:
+    VERSION = ''
 
 try:
     long_description = open('README.md').read()
@@ -10,7 +15,7 @@ except Exception as e:
 
 setup(
     name='easyserializer',
-    version=easyserializer.VERSION,
+    version=VERSION,
     description='serialize a object | 简易对象序列化工具',
     long_description=long_description,
     long_description_content_type="text/markdown",

@@ -15,7 +15,7 @@ serialize a object
 """
 
 
-VERSION = '0.2.1'
+VERSION = '0.2.2'
 
 
 class SerializeableObject(object):

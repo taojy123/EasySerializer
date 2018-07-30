@@ -18,6 +18,7 @@ setup(
     author_email='taojy123@163.com',
     maintainer='tao.py',
     maintainer_email='taojy123@163.com',
+    install_requires=['six'],
     license='MIT License',
     py_modules=['easyserializer'],
     platforms=["all"],

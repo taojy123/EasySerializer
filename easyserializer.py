@@ -15,7 +15,7 @@ serialize a object
 """
 
 
-VERSION = '0.2.4'
+VERSION = '0.2.5'
 
 def obj_to_dict(obj, **kwargs):
 
@@ -87,12 +87,12 @@ def obj_to_dict(obj, **kwargs):
         # 无法正常获取到值就设为 None
         try:
             value = getattr(obj, key)
+            # callable 的方法不输出
+            if callable(value):
+                continue
+            v = obj_to_dict(value, **kwargs)
         except Exception as e:
-            value = None
-
-        # callable 的方法不输出
-        if callable(value):
-            continue
+            v = None
 
         v = obj_to_dict(value, **kwargs)
         result[key] = v

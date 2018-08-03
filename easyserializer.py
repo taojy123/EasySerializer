@@ -15,7 +15,7 @@ serialize a object
 """
 
 
-VERSION = '0.2.2'
+VERSION = '0.2.3'
 
 
 class SerializeableObject(object):
@@ -86,8 +86,12 @@ class SerializeableObject(object):
             # 为了避免垃圾数据过多 过滤掉以 `_` 开头的字段，这些字段一般不需要序列化输出
             if key.startswith('_'):
                 continue
-
-            value = getattr(obj, key)
+                
+            # 无法正常获取到值就设为 None
+            try:
+                value = getattr(obj, key)
+            except Exception as e:
+                value = None
 
             # callable 的方法不输出
             if callable(value):

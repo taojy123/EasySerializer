@@ -55,7 +55,7 @@ class SerializeableObject(object):
 
         if isinstance(obj, dict):
             result = {}
-            for sub_key, sub_value in value.items():
+            for sub_key, sub_value in obj.items():
                 result[sub_key] = SerializeableObject.obj2dict(sub_value, **kwargs)
             return result
 

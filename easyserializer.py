@@ -15,7 +15,7 @@ serialize a object
 """
 
 
-VERSION = '0.2.5'
+VERSION = '0.2.7'
 
 def obj_to_dict(obj, **kwargs):
 
@@ -94,7 +94,6 @@ def obj_to_dict(obj, **kwargs):
         except Exception as e:
             v = None
 
-        v = obj_to_dict(value, **kwargs)
         result[key] = v
 
     return result

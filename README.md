@@ -1,6 +1,9 @@
 # easyserializer
 
 
+[![PyPI Downloads](https://pypistats.com/badge/easyserializer.png)](https://pypistats.com/package/easyserializer)
+
+
 简易对象序列化工具
 serialize a object 
 

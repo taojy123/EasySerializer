@@ -13,7 +13,7 @@ serialize a object
 
 ```python
 
-from easyserializer import *
+from easyserializer import SerializeableObject, serialize, obj_to_dict, obj_to_json
 import datetime
 
 

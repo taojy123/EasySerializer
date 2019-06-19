@@ -15,14 +15,14 @@ serialize a object
 """
 
 
-VERSION = '0.2.7'
+VERSION = '0.2.8'
 
 def obj_to_dict(obj, **kwargs):
 
     prune = kwargs.get('prune', False)                  # 精简模式
     filter_fields = kwargs.get('filter_fields', [])     # 指定输出字段
     exclude_fields = kwargs.get('exclude_fields', [])   # 指定不要输出字段
-    limit_deep = kwargs.get('limit_deep', 0)            # 限制递归深度
+    limit_deep = kwargs.get('limit_deep', 5)            # 限制递归深度，默认5层。 设为0则不限制递归深度(不建议)
 
     current_deep = kwargs.get('current_deep', 0)        # 当前递归深度(程序自己维护)
 

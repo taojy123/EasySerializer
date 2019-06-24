@@ -9,7 +9,7 @@ except Exception as e:
 
 setup(
     name='easyserializer',
-    version='0.2.8',
+    version='0.2.9',
     description='serialize a object | 简易对象序列化工具',
     long_description=long_description,
     long_description_content_type="text/markdown",

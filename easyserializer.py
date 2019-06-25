@@ -14,7 +14,7 @@ serialize a object
 """
 
 
-VERSION = '0.2.9'
+VERSION = '0.2.10'
 TOO_DEEP = 'TOO_DEEP'
 
 
@@ -31,6 +31,10 @@ def obj_to_dict(obj, *filter_fields, **kwargs):
     exclude_fields = kwargs.get('exclude_fields', [])
     limit_deep = kwargs.get('limit_deep', 5)
     prune = kwargs.get('prune', False)
+
+    if isinstance(obj, SerializeableObject):
+        filter_fields += obj.serialize_filter_fields()
+        exclude_fields += obj.serialize_exclude_fields()
 
     current_deep = kwargs.get('current_deep', 0)  # 当前递归深度(程序自己维护,不要手动传入!)
 
@@ -123,7 +127,6 @@ serialize = obj_to_dict
 
 
 class SerializeableObject(object):
-    
 
     def serialize(self, *filter_fields, **kwargs):
         return obj_to_dict(self, *filter_fields, **kwargs)
@@ -133,6 +136,12 @@ class SerializeableObject(object):
 
     def to_json(self, *filter_fields, **kwargs):
         return obj_to_json(self, *filter_fields, **kwargs)
+
+    def serialize_filter_fields(self):
+        return []
+
+    def serialize_exclude_fields(self):
+        return []
 
 
 

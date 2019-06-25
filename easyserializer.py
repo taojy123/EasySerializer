@@ -14,7 +14,7 @@ serialize a object
 """
 
 
-VERSION = '0.2.10'
+VERSION = '0.2.11'
 TOO_DEEP = 'TOO_DEEP'
 
 
@@ -35,6 +35,10 @@ def obj_to_dict(obj, *filter_fields, **kwargs):
     if isinstance(obj, SerializeableObject):
         filter_fields += obj.serialize_filter_fields()
         exclude_fields += obj.serialize_exclude_fields()
+
+    # 当指定了 filter_fields 时，exclude_fields 不生效
+    if filter_fields:
+        exclude_fields = []
 
     current_deep = kwargs.get('current_deep', 0)  # 当前递归深度(程序自己维护,不要手动传入!)
 

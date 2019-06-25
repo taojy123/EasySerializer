@@ -14,7 +14,7 @@ serialize a object
 """
 
 
-VERSION = '0.2.11'
+VERSION = '0.2.12'
 TOO_DEEP = 'TOO_DEEP'
 
 
@@ -33,8 +33,10 @@ def obj_to_dict(obj, *filter_fields, **kwargs):
     prune = kwargs.get('prune', False)
 
     if isinstance(obj, SerializeableObject):
-        filter_fields += obj.serialize_filter_fields()
-        exclude_fields += obj.serialize_exclude_fields()
+        if not filter_fields:
+            filter_fields = obj.default_filter_fields()
+        if not exclude_fields:
+            exclude_fields = obj.default_exclude_fields()
 
     # 当指定了 filter_fields 时，exclude_fields 不生效
     if filter_fields:
@@ -141,10 +143,10 @@ class SerializeableObject(object):
     def to_json(self, *filter_fields, **kwargs):
         return obj_to_json(self, *filter_fields, **kwargs)
 
-    def serialize_filter_fields(self):
+    def default_filter_fields(self):
         return []
 
-    def serialize_exclude_fields(self):
+    def default_exclude_fields(self):
         return []
 
 

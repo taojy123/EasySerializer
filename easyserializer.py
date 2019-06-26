@@ -14,7 +14,7 @@ serialize a object
 """
 
 
-VERSION = '0.2.12'
+VERSION = '0.2.13'
 TOO_DEEP = 'TOO_DEEP'
 
 
@@ -29,7 +29,7 @@ def obj_to_dict(obj, *filter_fields, **kwargs):
 
     filter_fields = list(filter_fields) + list(kwargs.get('filter_fields', []))
     exclude_fields = kwargs.get('exclude_fields', [])
-    limit_deep = kwargs.get('limit_deep', 5)
+    limit_deep = kwargs.get('limit_deep', 10)
     prune = kwargs.get('prune', False)
 
     if isinstance(obj, SerializeableObject):
@@ -50,11 +50,14 @@ def obj_to_dict(obj, *filter_fields, **kwargs):
 
     kwargs['current_deep'] = current_deep + 1
 
-    # 可被序列化的类型
-    serializeable_types = six.integer_types + six.string_types + (six.text_type,)
+    # 可直接被序列化的类型
+    serializeable_types = six.integer_types + six.string_types + (six.text_type, )
     
     # 无法被序列化的类型
     disserializeable_types = (six.binary_type,)
+    
+    if obj is None:
+        return None
 
     if isinstance(obj, serializeable_types):
         return obj

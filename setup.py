@@ -3,14 +3,14 @@
 from setuptools import setup
 
 try:
-    long_description = open('README.md').read()
+    long_description = open('README.md', encoding='utf8').read()
 except Exception as e:
     print(e)
     long_description = ''
 
 setup(
     name='easyserializer',
-    version='0.2.14',
+    version='0.2.15',
     description='serialize a object | 简易对象序列化工具',
     long_description=long_description,
     long_description_content_type="text/markdown",
